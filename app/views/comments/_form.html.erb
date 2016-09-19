@@ -1,0 +1,15 @@
+<% if current_user %>
+  <h3>Add new comment:</h3>
+  
+  <%= form_for(@blog.comments.new) do |f| %>
+    <%= f.hidden_field :commenter_id, :value => current_user.id %>
+    <div class="input-group">
+      <%= f.text_field :content, required: true, class: 'form-control' %>
+      <span class="input-group-btn">
+        <%= f.submit "Send", class: 'btn btn-secondary' %>  
+      </span>
+    </div>
+  <% end %>
+<% else %>
+  <h3><%= link_to "Sign up", new_user_path %> to add comment </h3>
+<% end %>
