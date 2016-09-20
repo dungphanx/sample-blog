@@ -1,5 +1,5 @@
 <% if current_user %>
-  <h3>Add new comment:</h3>
+  <h4 class="card-title">Add new comment:</h4>
   
   <%= form_for(@blog.comments.new) do |f| %>
     <%= f.hidden_field :commenter_id, :value => current_user.id %>
@@ -11,5 +11,5 @@
     </div>
   <% end %>
 <% else %>
-  <h3><%= link_to "Sign up", new_user_path %> to add comment </h3>
+  <p class="card-title"><%= link_to "Sign up", new_user_path %> to add comment </p>
 <% end %>

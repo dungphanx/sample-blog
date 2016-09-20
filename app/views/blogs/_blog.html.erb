@@ -1,7 +1,12 @@
 <div class="card">
   <div class="card-block">
-    <p class="card-title"><%= blog.creator.name %></p>
-    <p><%= blog.title %></p>
-    <p><%= blog.body %></p>
+    <h4 class="card-title"><%= link_to blog.title, blog_path(blog) %></h4>
+    <p class="card-text"><%= blog.body %></p>
+  </div>
+  <div class="card-block text-xs-right">
+    <small class="text-muted"><%= time_ago_in_words(blog.created_at) %> by <%= link_to blog.creator.name, user_path(blog.creator) %></small>
+    <p>
+      <small class="text-muted"><%= pluralize(blog.comments.count, 'comment') %></small>
+    </p>
   </div>
 </div>

@@ -1,0 +1,24 @@
+<% @blogs.each do |blog| %>
+<div class="card">
+  <div class="card-block">
+    <h4 class="card-title"><%= blog.title %></h4>
+    <p class="card-text"><%= blog.body %></p>
+  </div>
+  <div class="card-block text-xs-right">
+    <small class="text-muted"><%= time_ago_in_words(blog.created_at) %> by <%= link_to blog.creator.name, user_path(blog.creator) %></small>
+    <p>
+      <small class="text-muted"><%= pluralize(blog.comments.count, 'comment') %></small>
+    </p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <% blog.comments.order('created_at desc').each do |comment| %>
+      <li class="list-group-item">
+        <p class="card-text">
+          <strong><%= comment.commenter.name %>: </strong>
+          <%= comment.content %>
+        </p>
+      </li>
+    <% end %>
+  </ul>
+</div>
+<% end %>

@@ -1,6 +1,8 @@
 <%= render @blog %>
 <div class="card">
-  <%= render 'comments/form' %>
+  <div class="card-block">
+    <%= render 'comments/form' %>
+  </div>
   
   <% @blog.comments.order('created_at desc').each do |comment| %>
     <div class="card-block">

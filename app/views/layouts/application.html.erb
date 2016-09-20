@@ -13,9 +13,11 @@
       <div class="container">
         <a class="navbar-brand" href="/">SampleBlog</a>
         <ul class="nav navbar-nav">
+          <% if current_user %>
           <li class="nav-item">
             <%= link_to "Create new blog", new_blog_path, class: 'nav-link' %>
           </li>
+          <% end %>
         </ul>
         <ul class="nav navbar-nav pull-xs-right">
           <% if current_user %>
